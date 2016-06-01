@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3AAACF"
+    android:weightSum="1">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/tittle_left" />
+
+    <EditText
+        android:id="@+id/fullname"
+        style="@style/myCustomEditText"
+        android:hint="@string/fullName"
+        android:layout_height="50dp"
+        android:layout_below="@+id/app_bar"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/role"
+        style="@style/myCustomEditText"
+        android:hint="@string/role"
+        android:layout_height="50dp"
+        android:layout_below="@+id/fullname"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingRight="10dp"
+        style="@style/myCustomEditText"
+        android:inputType="phone"
+        android:ems="13"
+        android:id="@+id/phone"
+        android:hint="@string/phone"
+        android:layout_weight="0.10"
+        android:layout_below="@+id/role"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:id="@+id/comment"
+        style="@style/myCustomEditText"
+        android:hint="@string/comment"
+        android:layout_height="50dp"
+        android:layout_below="@+id/phone"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/save" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/listcon"
+        android:id="@+id/view"
+        style="@style/myCustomButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/myCustomButton"
+        android:text="@string/save"
+        android:id="@+id/save"
+        android:layout_above="@+id/view"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

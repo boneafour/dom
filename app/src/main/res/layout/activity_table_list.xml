@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/name"
+        android:text="Не заполнено "
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#024E68">
+    </TextView>
+
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/list"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/name"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </TextView>
+
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/date"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/list"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+    </TextView>
+
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_alignTop="@+id/date"
+        android:layout_toRightOf="@+id/date"
+        android:layout_toEndOf="@+id/date" />
+
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/role"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/date"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/list2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/role"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/list2"
+        android:layout_alignRight="@+id/time"
+        android:layout_alignEnd="@+id/time" />
+    <TextView
+        android:text="Не заполнено "
+        android:id="@+id/specialforcook"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textColor="#024E68"
+        android:layout_below="@+id/name"
+        android:layout_toRightOf="@+id/list"
+        android:layout_toEndOf="@+id/list" />
+
+</RelativeLayout>

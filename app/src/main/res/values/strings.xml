@@ -1,0 +1,155 @@
+<resources>
+    <string name="app_name">Домохозяйка</string>
+    <string name="cleaningSt">Уборка</string>
+    <string name="washSt">Стирка</string>
+    <string name="cookingSt">Готовка</string>
+    <string name="contactSt">Контакты-ответсвенный</string>
+    <string name="dish">Блюда</string>
+    <string name="date">Дата</string>
+    <string name="time">Время</string>
+    <string name="breakfast">Завтрак</string>
+    <string name="lunch">Обед</string>
+    <string name="dinner">Ужин</string>
+    <string name="responsible">Ответственный</string>
+    <string name="carrot">Марковь</string>
+    <string name="bow">Лук</string>
+    <string name="comment">Комментарии</string>
+    <string name="send">Отправить</string>
+
+
+    <string name="listClean">Список:Уборка дома</string>
+    <string name="washWindow">Помыть окна</string>
+    <string name="vacuum">Пропылесосить</string>
+    <string name="accept">Принят</string>
+
+    <string name="listClothess">Список:Постирать белые вещи</string>
+    <string name="white">Белые</string>
+    <string name="calico">Ситцевые</string>
+
+
+    <string name="contct">Контакты</string>
+    <string name="listcon">Список контакты</string>
+    <string name="fullName">ФИО</string>
+    <string name="role">Роль</string>
+    <string name="father">Папа</string>
+    <string name="mother">Мама</string>
+    <string name="grandMother">Бабушка</string>
+    <string name="grandFathet">Дедушка</string>
+    <string name="sister">Сестра</string>
+    <string name="brother">Брат</string>
+    <string name="littleSister">Сестренка</string>
+    <string name="littleBro">Братишка</string>
+    <string name="phone">Телефон</string>
+    <string name="save">Сохранить</string>
+
+    <string-array name="main">
+        <item>Готовка</item>
+        <item>Уборка</item>
+        <item>Стирка</item>
+        <item>Контакты-ответсвенный</item>
+        <item>Список планов</item>
+    </string-array>
+
+    <string-array name="food">
+        <item>Завтрак</item>
+        <item>Обед</item>
+        <item>Ужин</item>
+    </string-array>
+
+    <string-array name="res">
+        <item>Папа</item>
+        <item>Мама</item>
+        <item>Бабушка</item>
+        <item>Дедушка</item>
+        <item>Сестра</item>
+        <item>Брат</item>
+        <item>Сестренка</item>
+        <item>Братишка</item>
+    </string-array>
+    <string-array name="cleanlist1">
+        <item>Текущая уборка</item>
+        <item>Быстрая уборка</item>
+        <item>Вынужденная уборка</item>
+        <item>Большая уборка</item>
+    </string-array>
+
+    <string-array name="washlist">
+        <item>Футболки</item>
+        <item>Джинсы</item>
+        <item>Носки</item>
+        <item>Нижные белые</item>
+        <item>Постель</item>
+        <item>Шторы</item>
+    </string-array>
+
+    <string-array name="dishlist">
+        <item>Бешпармак</item>
+        <item>Манты</item>
+        <item>Плов</item>
+        <item>Куырдак</item>
+        <item>Катлет</item>
+        <item>Лагман</item>
+        <item>Лагман</item>
+        <item>Фри</item>
+        <item>Казан-Кебаб</item>
+        <item>Лагман</item>
+        <item>Лагман</item>
+    </string-array>
+
+    <string-array name="cleanlist">
+        <item>Протереть пыль</item>
+        <item>Вымыть плинтуса</item>
+        <item>Протереть холодильник</item>
+        <item>Освежать унитаз и раковину</item>
+        <item>Пропылесосить полы</item>
+        <item>Протереть зеркала и окна</item>
+        <item>Поменять постельное белье</item>
+        <item>Выбросить мусор</item>
+    </string-array>
+
+    <string-array name="dish">
+        <item>Папа</item>
+        <item>Мама</item>
+        <item>Бабушка</item>
+        <item>Дедушка</item>
+        <item>Сестра</item>
+        <item>Брат</item>
+        <item>Сестренка</item>
+        <item>Братишка</item>
+    </string-array>
+
+    <string-array name="time">
+        <item>00:00-01:00</item>
+        <item>01:00-02:00</item>
+        <item>02:00-03:00</item>
+        <item>03:00-04:00</item>
+        <item>04:00-05:00</item>
+        <item>05:00-06:00</item>
+        <item>07:00-08:00</item>
+        <item>08:00-09:00</item>
+        <item>09:00-10:00</item>
+        <item>10:00-11:00</item>
+        <item>11:00-12:00</item>
+        <item>12:00-13:00</item>
+        <item>13:00-14:00</item>
+        <item>14:00-15:00</item>
+        <item>15:00-16:00</item>
+        <item>16:00-17:00</item>
+        <item>17:00-18:00</item>
+        <item>18:00-19:00</item>
+        <item>19:00-20:00</item>
+        <item>20:00-21:00</item>
+        <item>21:00-22:00</item>
+        <item>22:00-23:00</item>
+        <item>23:00-00:00</item>
+    </string-array>
+
+    <string name="listplan">Список планов</string>
+    <string name="tasks">Задачи/Цели</string>
+    <string name="table">Таблица</string>
+
+    <string name="all">ВСЕ</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+
+</resources>
