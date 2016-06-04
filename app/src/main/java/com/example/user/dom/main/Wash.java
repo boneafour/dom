@@ -29,7 +29,7 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 	String ListS, DataS, TimeS, ResS, TypeS,  CommentS;
 	DatabaseHandler db = new DatabaseHandler(this);
 	MultiSelectionSpinner works;
-	String[] array = {"Лук", "Марковка", "Картошка", "Капуста", "Помидор", "Огурцы"};
+	String[] array = {"Цветные", "Шерсть", "Белые", "Ситцевые "};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

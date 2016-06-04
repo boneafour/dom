@@ -1,6 +1,7 @@
 package com.example.user.dom.main;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -30,11 +31,11 @@ public class Clean extends Activity implements View.OnClickListener,MultiSelecti
 	MultiSelectionSpinner works;
 	String[] array = {"Протереть пыль", "Вымыть плинтуса", "Протереть холодильник", "Освежать унитаз и раковину", "Пропылесосить полы", "Протереть зеркала и окна"};
 	private ImageButton btnBack;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_clean);
-
 		// get role in base
 		db = new DatabaseHandler(this);
 		List<ContactData> contacts = db.getAllContacts();

@@ -13,7 +13,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 4;
+	private static final int DATABASE_VERSION = 5;
 
 	// Database Name
 	private static final String DATABASE_NAME = "contactsManager";
@@ -23,7 +23,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String TABLE_CLEANS = "cleans";
 	private static final String TABLE_COOKS = "cooks";
 	private static final String TABLE_WASHS = "washs";
-
 	// Contacts Table Columns names
 	//-------------Contacts--------------------
 	private static final String CONTACT_ID = "contact_id";
@@ -293,7 +292,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	// Deleting single contact
 	public void deleteContact(ContactData contact) {
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_CONTACTS, CONTACT_ID + " = ?",
+		db.delete(TABLE_CONTACTS, CONTACT_ID +NAME +ROLE +PHONE+COMMENT+ " = ?",
 				new String[] { String.valueOf(contact.getID()) });
 		db.close();
 	}

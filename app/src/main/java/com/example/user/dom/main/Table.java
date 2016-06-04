@@ -1,6 +1,7 @@
 package com.example.user.dom.main;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,6 +9,8 @@ import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.PopupMenu;
@@ -28,12 +31,18 @@ public class Table extends Activity implements View.OnClickListener {
 	ArrayList<String> name, list1, date, time, cook, role, list2, comment;
 	private TextView txtTitle;
 	private ImageButton btnBack;
-
+	Button dialog_bbut;
+	Button dialog_net;
+	Dialog dl;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_table);
-
+		dl = new Dialog(Table.this);
+		dl.setTitle("Вы Хотите удалить");
+		dl.setContentView(R.layout.dialog_layout);
+		dialog_bbut = (Button)dl.findViewById(R.id.delete);
+		dialog_net = (Button)dl.findViewById(R.id.net);
 		name = new ArrayList<String>();
 		list1 = new ArrayList<String>();
 		date = new ArrayList<String>();
@@ -106,6 +115,29 @@ public class Table extends Activity implements View.OnClickListener {
 		lview = (ListView) findViewById(R.id.listView2);
 		lviewAdapter = new TableListAdapter(this, name, list1, date, time, cook, role, list2, comment);
 		lview.setAdapter(lviewAdapter);
+		lview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+				dl.show();
+
+				return true;
+			}
+		});
+		dialog_bbut.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				int a;
+				//String nameS, roleS, phoneS, commentS;
+			//	db.deleteContact(a, nameS, roleS, phoneS, commentS);
+
+			}
+		});
+		dialog_net.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				dl.dismiss();
+			}
+		});
 
 
 		btnBack = (ImageButton) findViewById(R.id.btnBack);
