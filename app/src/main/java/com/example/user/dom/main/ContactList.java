@@ -19,7 +19,7 @@ public class ContactList extends Activity implements View.OnClickListener{
     ListView lview;
     ContactListAdapter lviewAdapter;
     DatabaseHandler db = new DatabaseHandler(this);
-    ArrayList<String> fullnameA, roleA, phoneA, commentA;
+    ArrayList<String> fullnameA, roleA, phoneA, emailA, commentA;
     private TextView txtTitle;
     private ImageButton btnBack;
 
@@ -32,6 +32,7 @@ public class ContactList extends Activity implements View.OnClickListener{
         fullnameA = new ArrayList<String>();
         roleA = new ArrayList<String>();
         phoneA = new ArrayList<String>();
+        emailA = new ArrayList<String>();
         commentA = new ArrayList<String>();
         for(ContactData cn : contacts){
             String a = cn.getName();
@@ -47,7 +48,7 @@ public class ContactList extends Activity implements View.OnClickListener{
         txtTitle.setText(getString(R.string.listcon));
 
            lview = (ListView) findViewById(R.id.listView2);
-           lviewAdapter = new ContactListAdapter(this, fullnameA, roleA, phoneA, commentA);
+           lviewAdapter = new ContactListAdapter(this, fullnameA, roleA, phoneA,  commentA);
            lview.setAdapter(lviewAdapter);
 
 

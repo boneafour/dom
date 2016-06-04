@@ -49,7 +49,7 @@ public class ContactListAdapter extends BaseAdapter implements View.OnClickListe
     }
 
     private class ViewHolder {
-        TextView txtViewName, txtViewRole, txtViewPhone, txtViewComment;
+        TextView txtViewName, txtViewRole, txtViewPhone,  txtViewComment;
         TextView txtViewDescription;
     }
 

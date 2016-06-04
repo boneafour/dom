@@ -29,8 +29,6 @@ public class Contact extends Activity implements View.OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contact);
 
-
-
 		role = (EditText) findViewById(R.id.role);
 		fullName = (EditText) findViewById(R.id.fullname);
 		phone = (EditText) findViewById(R.id.phone);

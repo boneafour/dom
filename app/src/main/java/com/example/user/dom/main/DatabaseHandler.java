@@ -13,7 +13,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 	// All Static variables
 	// Database Version
-	private static final int DATABASE_VERSION = 5;
+	private static final int DATABASE_VERSION = 6;
 
 	// Database Name
 	private static final String DATABASE_NAME = "contactsManager";
@@ -29,6 +29,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String NAME = "contact_name";
 	private static final String ROLE = "contact_role";
 	private static final String PHONE = "contact_phone";
+	//private static final String EMAIL = "email";
 	private static final String COMMENT = "contact_comment";
 	//-------------Clean--------------------
 	private static final String CLEAN_ID = "clean_id";
@@ -113,6 +114,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 		values.put(NAME, contact.getName());
 		values.put(ROLE, contact.getRole());
 		values.put(PHONE, contact.getPhone());
+	//	values.put(EMAIL, contact.getEmail());
 		values.put(COMMENT, contact.getComment());
 		db.insert(TABLE_CONTACTS, null, values);
 		db.close();

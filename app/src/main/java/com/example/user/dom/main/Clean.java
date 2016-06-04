@@ -2,6 +2,8 @@ package com.example.user.dom.main;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -27,7 +29,7 @@ public class Clean extends Activity implements View.OnClickListener,MultiSelecti
 	Spinner timeSpinner, list, res;
 	DatabaseHandler db = new DatabaseHandler(this);
 	EditText Data, comment;
-	String ListS, DataS, TimeS, ResS, CommentS, WorkSS;
+	String ListS, DataS, TimeS, ResS, CommentS, WorkSS, EMAIL;
 	MultiSelectionSpinner works;
 	String[] array = {"Протереть пыль", "Вымыть плинтуса", "Протереть холодильник", "Освежать унитаз и раковину", "Пропылесосить полы", "Протереть зеркала и окна"};
 	private ImageButton btnBack;
@@ -62,6 +64,8 @@ public class Clean extends Activity implements View.OnClickListener,MultiSelecti
 		comment = (EditText) findViewById(R.id.comment);
 		Button send = (Button) findViewById(R.id.send);
 		send.setOnClickListener(this);
+		Button save = (Button) findViewById(R.id.save);
+		save.setOnClickListener(this);
 		btnBack = (ImageButton) findViewById(R.id.btnBack);
 		btnBack.setOnClickListener(this);
 
@@ -73,17 +77,15 @@ public class Clean extends Activity implements View.OnClickListener,MultiSelecti
 			case R.id.btnBack:
 				NavUtils.navigateUpFromSameTask(this);
 				break;
-			case R.id.send:
+			case R.id.save:
 
 				ListS = "" + list.getSelectedItem().toString();;
 				DataS = "" + Data.getText();
-				Data.setText("");
 				TimeS = "" + timeSpinner.getSelectedItem().toString();
 				ResS = res.getSelectedItem().toString();
 				WorkSS = works.getSelectedItem().toString();
 				CommentS = "" + comment.getText().toString();
-				comment.setText("");
-
+				EMAIL = (ListS+" Дата: "+DataS+" Время: "+TimeS+" Ответственный: "+ResS+" Нужно: "+WorkSS+" Комментарий: "+CommentS+" ");
 				db.addClean(new CleanData(ListS, DataS, TimeS, ResS, WorkSS, CommentS));
 				List<CleanData> cleans = db.getAllCleans();
 				for (CleanData cn : cleans) {
@@ -92,8 +94,41 @@ public class Clean extends Activity implements View.OnClickListener,MultiSelecti
 				}
 				Toast.makeText(Clean.this, "Сохранено", Toast.LENGTH_SHORT).show();
 					break;
+			case R.id.send:
+				ListS = "" + list.getSelectedItem().toString();;
+				DataS = "" + Data.getText();
+				TimeS = "" + timeSpinner.getSelectedItem().toString();
+				ResS = res.getSelectedItem().toString();
+				WorkSS = works.getSelectedItem().toString();
+				CommentS = "" + comment.getText().toString();
+				EMAIL = (ListS+" Дата: "+DataS+" Время: "+TimeS+" Ответственный: "+ResS+" Нужно: "+WorkSS+" Комментарий: "+CommentS+" ");
+
+				sendEmail();
+				break;
 				}
 		}
+
+	protected void sendEmail() {
+		Log.i("Send email", "");
+		String[] TO = {""};
+		String[] CC = {""};
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+		emailIntent.setData(Uri.parse("mailto:"));
+		emailIntent.setType("text/plain");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+		emailIntent.putExtra(Intent.EXTRA_CC, CC);
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Напоминание");
+		emailIntent.putExtra(Intent.EXTRA_TEXT, EMAIL);
+
+		try {
+			startActivity(Intent.createChooser(emailIntent, "Отправить на почту..."));
+			finish();
+		}
+		catch (android.content.ActivityNotFoundException ex) {
+			Toast.makeText(Clean.this, "Отправлено", Toast.LENGTH_SHORT).show();
+		}
+	}
 
 	@Override
 	public void selectedIndices(List<Integer> indices) {

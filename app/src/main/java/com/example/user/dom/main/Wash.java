@@ -1,6 +1,8 @@
 package com.example.user.dom.main;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -26,7 +28,7 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 	private ImageButton btnBack;
 	Spinner timeSpinner, list, res;
 	EditText Data, comment;
-	String ListS, DataS, TimeS, ResS, TypeS,  CommentS;
+	String ListS, DataS, TimeS, ResS, TypeS,  CommentS, EMAIL;
 	DatabaseHandler db = new DatabaseHandler(this);
 	MultiSelectionSpinner works;
 	String[] array = {"Цветные", "Шерсть", "Белые", "Ситцевые "};
@@ -56,7 +58,8 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 		works.setListener(this);
 		Data = (EditText) findViewById(R.id.date);
 		comment = (EditText) findViewById(R.id.comment);
-
+		Button save = (Button) findViewById(R.id.save);
+		save.setOnClickListener(this);
 		Button send = (Button) findViewById(R.id.send);
 		send.setOnClickListener(this);
 		btnBack = (ImageButton) findViewById(R.id.btnBack);
@@ -70,7 +73,7 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 			case R.id.btnBack:
 				NavUtils.navigateUpFromSameTask(this);
 				break;
-			case R.id.send:
+			case R.id.save:
 				ListS = ""+list.getSelectedItem().toString();
 				DataS = ""+Data.getText();
 				Data.setText("");
@@ -79,7 +82,7 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 				TypeS = works.getSelectedItem().toString();
 				CommentS = ""+comment.getText();
 				comment.setText("");
-
+				EMAIL = (ListS+" Дата: "+DataS+" Время: "+TimeS+" Ответственный: "+ResS+" Комментарий: "+CommentS+" ");
 				db.addWash(new WashData(ListS, DataS, TimeS, ResS, TypeS, CommentS));
 				List<WashData> washs = db.getAllWash();
 				for (WashData cn : washs) {
@@ -87,6 +90,39 @@ public class Wash extends Activity implements View.OnClickListener, MultiSelecti
 					Log.d("Name: ", log);
 				}
 				Toast.makeText(Wash.this, "Сохранено", Toast.LENGTH_SHORT).show();
+				break;
+			case R.id.send:
+				ListS = ""+list.getSelectedItem().toString();
+				DataS = ""+Data.getText();
+				TimeS = ""+timeSpinner.getSelectedItem().toString();
+				ResS = res.getSelectedItem().toString();
+				TypeS = works.getSelectedItem().toString();
+				CommentS = ""+comment.getText();
+				EMAIL = (ListS+" Дата: "+DataS+" Время: "+TimeS+" Ответственный: "+ResS+" Комментарий: "+CommentS+" ");
+				sendEmail();
+				break;
+		}
+	}
+
+	protected void sendEmail() {
+		Log.i("Send email", "");
+		String[] TO = {""};
+		String[] CC = {""};
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+		emailIntent.setData(Uri.parse("mailto:"));
+		emailIntent.setType("text/plain");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+		emailIntent.putExtra(Intent.EXTRA_CC, CC);
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Напоминание");
+		emailIntent.putExtra(Intent.EXTRA_TEXT, EMAIL);
+
+		try {
+			startActivity(Intent.createChooser(emailIntent, "Отправить на почту..."));
+			finish();
+		}
+		catch (android.content.ActivityNotFoundException ex) {
+			Toast.makeText(Wash.this, "Отправлено", Toast.LENGTH_SHORT).show();
 		}
 	}
 

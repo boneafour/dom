@@ -51,10 +51,13 @@ public class ContactData {
 		this._phone = _phone;
 	}
 
+
 	public String getComment(){
 		return this._comment;
 	}
 	public void setComment(String _comment){
 		this._comment = _comment;
 	}
+
+
 }

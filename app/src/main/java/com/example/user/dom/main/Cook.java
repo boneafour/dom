@@ -1,6 +1,8 @@
 package com.example.user.dom.main;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
@@ -24,7 +26,7 @@ public class Cook extends Activity implements View.OnClickListener,MultiSelectio
 
 	private TextView txtTitle;
 	private ImageButton btnBack;
-	String dishName, date, commentSt, vegetablesSt, timeSt, foodSt, resSt;
+	private String dishName, date, commentSt, vegetablesSt, timeSt, foodSt, resSt, EMAIL;
 	EditText  Data, comment;
 	Spinner food, timeSpinner, res, dish;
 	MultiSelectionSpinner vegetables;
@@ -58,6 +60,8 @@ public class Cook extends Activity implements View.OnClickListener,MultiSelectio
 		res = (Spinner) findViewById(R.id.responsility);
 		ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, list);
 		res.setAdapter(adapter);
+		Button save = (Button) findViewById(R.id.save);
+		save.setOnClickListener(this);
 		Button send = (Button) findViewById(R.id.send);
 		send.setOnClickListener(this);
 		txtTitle = (TextView) findViewById(R.id.txtTitle);
@@ -74,17 +78,15 @@ public class Cook extends Activity implements View.OnClickListener,MultiSelectio
 			case R.id.btnBack:
 				NavUtils.navigateUpFromSameTask(this);
 				break;
-			case R.id.send:
+			case R.id.save:
 				dishName = ""+dish.getSelectedItem().toString();
 				date = ""+Data.getText();
-				Data.setText("");
 				timeSt = ""+timeSpinner.getSelectedItem().toString();
 				foodSt = food.getSelectedItem().toString();
 				resSt = res.getSelectedItem().toString();
 				vegetablesSt = vegetables.getSelectedItem().toString();
-				commentSt = ""+comment.getText();
 				comment.setText("");
-
+				EMAIL = ("Название блюдо: "+dishName+" Дата: "+date+" Время: "+timeSt+" на  "+foodSt+" Ответственный: "+resSt+" Нужен: "+vegetablesSt+" Комментарий: "+commentSt+" ");
 				db.addCookL(new CookData(dishName, date, timeSt, foodSt, resSt, vegetablesSt, commentSt));
 				List<CookData> cookBaseList = db.getAllCook();
 				for (CookData cn : cookBaseList) {
@@ -94,8 +96,41 @@ public class Cook extends Activity implements View.OnClickListener,MultiSelectio
 				Toast.makeText(Cook.this, "Сохранено", Toast.LENGTH_SHORT).show();
 
 				break;
+			case R.id.send:
+				dishName = ""+dish.getSelectedItem().toString();
+				date = ""+Data.getText();
+				timeSt = ""+timeSpinner.getSelectedItem().toString();
+				foodSt = food.getSelectedItem().toString();
+				resSt = res.getSelectedItem().toString();
+				vegetablesSt = vegetables.getSelectedItem().toString();
+				commentSt = ""+comment.getText();
+				EMAIL = ("Название блюдо: "+dishName+" Дата: "+date+" Время: "+timeSt+" на  "+foodSt+" Ответственный: "+resSt+" Нужен: "+vegetablesSt+" Комментарий: "+commentSt+" ");
+				sendEmail();
+				break;
 		}
 
+	}
+
+	protected void sendEmail() {
+		Log.i("Send email", "");
+		String[] TO = {""};
+		String[] CC = {""};
+		Intent emailIntent = new Intent(Intent.ACTION_SEND);
+
+		emailIntent.setData(Uri.parse("mailto:"));
+		emailIntent.setType("text/plain");
+		emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+		emailIntent.putExtra(Intent.EXTRA_CC, CC);
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Напоминание");
+		emailIntent.putExtra(Intent.EXTRA_TEXT, EMAIL);
+
+		try {
+			startActivity(Intent.createChooser(emailIntent, "Отправить на почту..."));
+			finish();
+		}
+		catch (android.content.ActivityNotFoundException ex) {
+			Toast.makeText(Cook.this, "Отправлено", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	@Override
